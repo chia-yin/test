@@ -1,10 +1,14 @@
+properties([
+  buildDiscarder(
+      logRotator(
+          numToKeepStr: '30'
+      )
+  )
+])
+
 pipeline {
   agent {
     label master
-  }
-
-  options {
-    ansiColor('xterm')
   }
 
   post {
