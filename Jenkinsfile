@@ -1,31 +1,17 @@
-properties([
-  buildDiscarder(
-      logRotator(
-          numToKeepStr: '30'
-      )
-  )
-])
-
 pipeline {
-  agent {
-    label master
-  }
+  agent any
 
-  post {
-    /* clean up our workspace */
-    always {
-      dir(WORKSPACE_DIR) {
-        deleteDir()
+  stages {
+    stage("Start") {
+      steps {
+        sh "echo Start > /tmp/Start.txt"
       }
     }
-    /* end of clean up our workspace */
-
-    success {
-      echo "success"
-    }
-
-    failure {
-      echo "failed"
+    
+    stage("End") {
+      steps {
+        sh "echo End > /tmp/End.txt"
+      }
     }
   }
 }
