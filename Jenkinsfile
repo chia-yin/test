@@ -1,37 +1,27 @@
-
-properties([pipelineTriggers([githubPush()])])
- 
 pipeline {
-    /* specify nodes for executing */
-    agent {
-        label 'master'
+  agent {
+    label master
+  }
+
+  options {
+    ansiColor('xterm')
+  }
+
+  post {
+    /* clean up our workspace */
+    always {
+      dir(WORKSPACE_DIR) {
+        deleteDir()
+      }
     }
- 
-    stages {
-        /* checkout repo */
-        stage('Checkout SCM') {
-            steps {
-                checkout([
-                 $class: 'GitSCM',
-                 branches: [[name: 'master']],
-                 userRemoteConfigs: [[
-                    url: 'git@github.com:chia-yin/test.git',
-                    credentialsId: '',
-                 ]]
-                ])
-            }
-        }
-         stage('Do the deployment') {
-            steps {
-                echo ">> Run deploy applications "
-            }
-        }
+    /* end of clean up our workspace */
+
+    success {
+      echo "success"
     }
- 
-    /* Cleanup workspace */
-    post {
-       always {
-           deleteDir()
-       }
-   }
+
+    failure {
+      echo "failed"
+    }
+  }
 }
