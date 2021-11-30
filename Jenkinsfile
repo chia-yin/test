@@ -6,7 +6,7 @@ pipeline {
       steps {
         git "https://github.com/chia-yin/test.git"
         checkout scm
-        sh (script: "curl -sS https://getcomposer.org/installer")
+        sh (script: "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer")
         sh (script: "mv composer.phar /usr/local/bin/composer")
         sh (script: "/usr/local/bin/composer install")
         sh (script: "cp .env.example .env")
