@@ -2,15 +2,21 @@ pipeline {
   agent any
 
   stages {
+
+    options {
+      ansiColor('xterm')
+    }
+
     stage("Start") {
       steps {
-        sh "echo Start > /tmp/Start.txt"
+        sh "composer install"
+        sh "pwd"
       }
     }
     
     stage("Running") {
       steps {
-        sh "echo Running > /tmp/Running.txt"
+        sh "php artisan test"
       }
     }
     
