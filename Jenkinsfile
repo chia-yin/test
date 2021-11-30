@@ -7,9 +7,9 @@ pipeline {
         git "https://github.com/chia-yin/test.git"
         checkout scm
         sh "curl -sS https://getcomposer.org/installer"
-        sh "sudo mv composer.phar /usr/local/bin/composer"
-        sh "/usr/local/bin/composer install"
-        sh "cp .env.example .env"
+        sh (script: "sudo mv composer.phar /usr/local/bin/composer")
+        sh (script: "/usr/local/bin/composer install")
+        sh (script: "cp .env.example .env")
       }
     }
     
