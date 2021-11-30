@@ -2,13 +2,11 @@ pipeline {
   agent any
 
   stages {
-    stage("Start") {
+    stage("Build") {
       steps {
-        sh "curl -sS https://getcomposer.org/installer | php56"
-        sh "cd ~/bin"
-        sh "ln -s /usr/local/bin/php56 php"
-        sh "php composer.phar install"
-        sh "pwd"
+        checkout scm
+        sh "composer install"
+        sh "cp .env.example .env"
       }
     }
     
