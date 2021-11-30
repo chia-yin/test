@@ -4,7 +4,8 @@ pipeline {
   stages {
     stage("Start") {
       steps {
-        sh "composer install"
+        sh "curl -sS getcomposer.org/installer | php"
+        sh "php composer.phar install"
         sh "pwd"
       }
     }
