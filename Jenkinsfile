@@ -2,11 +2,6 @@ pipeline {
   agent any
 
   stages {
-
-    options {
-      ansiColor('xterm')
-    }
-
     stage("Start") {
       steps {
         sh "composer install"
