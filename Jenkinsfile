@@ -6,7 +6,7 @@ pipeline {
       steps {
         git "https://github.com/chia-yin/test.git"
         checkout scm
-        sh (script: "composer install")
+        sh (script: "composer update")
         sh (script: "cp .env.example .env")
       }
     }
