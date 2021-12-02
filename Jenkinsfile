@@ -17,7 +17,7 @@ pipeline {
     
     stage("End") {
       steps {
-        sh "echo End > /tmp/End.txt"
+        junit 'report.xml'
       }
     }
   }
