@@ -20,14 +20,14 @@ pipeline {
       steps {
         junit 'report.xml'
       }
-    }
-
-    post {
-      success {
-        sh "echo success"
-      }
-      failure {
-        sh "echo failure"
+        
+      post {
+        success {
+          sh "echo success"
+        }
+        failure {
+          sh "echo failure"
+        }
       }
     }
   }
