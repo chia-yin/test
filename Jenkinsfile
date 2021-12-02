@@ -6,7 +6,7 @@ pipeline {
       steps {
         git "https://github.com/chia-yin/test.git"
         checkout scm
-        sh "composer install"
+        sh "composer install --ignore-platform-reqs"
       }
     }
     
