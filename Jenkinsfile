@@ -11,7 +11,7 @@ pipeline {
     
     stage("Running") {
       steps {
-        sh "php artisan test"
+        sh "php artisan test -p"
       }
     }
     
