@@ -10,7 +10,7 @@ pipeline {
       }
     }
     
-    stage("Running") {
+    stage("Testing") {
       steps {
         sh "vendor/bin/phpunit --log-junit report.xml"
       }
