@@ -11,7 +11,7 @@ pipeline {
     
     stage("Running") {
       steps {
-        sh "php artisan test -p"
+        sh "vendor/bin/phpunit --log-junit report.xml"
       }
     }
     
